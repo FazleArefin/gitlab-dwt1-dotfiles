@@ -42,8 +42,7 @@
   (setq dashboard-items '((recents . 5)
                           (agenda . 5 )
                           (bookmarks . 3)
-                          (projects . 3)
-                          (registers . 3)))
+                          (projects . 3)))
   :custom 
   (dashboard-modify-heading-icons '((recents . "file-text")
 				      (bookmarks . "book")))
