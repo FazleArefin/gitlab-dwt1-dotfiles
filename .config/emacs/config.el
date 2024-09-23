@@ -115,6 +115,39 @@
   :config
   (setq elfeed-goodies/entry-pane-size 0.5))
 
+(use-package ellama
+  :init
+  (setopt ellama-keymap-prefix "C-c e")  ;; keymap for all ellama functions
+  (setopt ellama-language "English")     ;; language ellama should translate to
+  (require 'llm-ollama)
+  (setopt ellama-provider
+	  (make-llm-ollama
+	   ;; this model should be pulled to use it
+	   ;; value should be the same as you print in terminal during pull
+	   :chat-model "llama3.1"
+	   :embedding-model "nomic-embed-text"
+	   :default-chat-non-standard-params '(("num_ctx" . 8192))))
+  ;; Predefined llm providers for interactive switching.
+  (setopt ellama-providers
+		    '(("zephyr" . (make-llm-ollama
+				   :chat-model "zephyr"
+				   :embedding-model "zephyr"))
+
+		      ("llama3.1" . (make-llm-ollama
+				   :chat-model "llama3.1"
+				   :embedding-model "llama3.1"))
+		      ("mixtral" . (make-llm-ollama
+				    :chat-model "mixtral"
+				    :embedding-model "mixtral"))))
+  (setopt ellama-naming-scheme 'ellama-generate-name-by-llm)
+  ;; Translation llm provider
+  (setopt ellama-translation-provider (make-llm-ollama
+				       :chat-model "mixtral"
+				       :embedding-model "nomic-embed-text"))
+  :config
+  (setq ellama-sessions-directory "~/.config/emacs/ellama-sessions/"
+        ellama-sessions-auto-save t))
+
 (use-package eradio
   :init
   (setq eradio-player '("mpv" "--no-video" "--no-terminal"))
@@ -227,6 +260,17 @@
     "TAB TAB" '(comment-line :wk "Comment lines")
     "u" '(universal-argument :wk "Universal argument"))
 
+   (dt/leader-keys
+    "a" '(:ignore t :wk "A.I.")
+    "a a" '(ellama-ask-about :wk "Ask ellama about region")
+    "a e" '(:ignore t :wk "Ellama enhance")
+    "a e g" '(ellama-improve-wording :wk "Ellama enhance grammar")
+    "a e w" '(ellama-improve-grammar :wk "Ellama enhance wording")
+    "a i" '(ellama-chat :wk "Ask ellama")
+    "a p" '(ellama-provider-select :wk "Ellama provider select")
+    "a s" '(ellama-summarize :wk "Ellama summarize region")
+    "a t" '(ellama-translate :wk "Ellama translate region"))
+   
   (dt/leader-keys
     "b" '(:ignore t :wk "Bookmarks/Buffers")
     "b b" '(switch-to-buffer :wk "Switch to buffer")
@@ -525,14 +569,14 @@
 
 (eval-after-load 'org-indent '(diminish 'org-indent-mode))
 
-(custom-set-faces
- '(org-level-1 ((t (:inherit outline-1 :height 1.7))))
- '(org-level-2 ((t (:inherit outline-2 :height 1.6))))
- '(org-level-3 ((t (:inherit outline-3 :height 1.5))))
- '(org-level-4 ((t (:inherit outline-4 :height 1.4))))
- '(org-level-5 ((t (:inherit outline-5 :height 1.3))))
- '(org-level-6 ((t (:inherit outline-5 :height 1.2))))
- '(org-level-7 ((t (:inherit outline-5 :height 1.1)))))
+  (custom-set-faces
+   '(org-level-1 ((t (:inherit outline-1 :height 1.7))))
+   '(org-level-2 ((t (:inherit outline-2 :height 1.6))))
+   '(org-level-3 ((t (:inherit outline-3 :height 1.5))))
+   '(org-level-4 ((t (:inherit outline-4 :height 1.4))))
+   '(org-level-5 ((t (:inherit outline-5 :height 1.3))))
+   '(org-level-6 ((t (:inherit outline-5 :height 1.2))))
+   '(org-level-7 ((t (:inherit outline-5 :height 1.1)))))
 
 (require 'org-tempo)
 

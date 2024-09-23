@@ -17,6 +17,7 @@
 - [[#drag-stuff][DRAG-STUFF]]
 - [[#ediff][EDIFF]]
 - [[#elfeed][ELFEED]]
+- [[#ellama][ELLAMA]]
 - [[#eradio][ERADIO]]
 - [[#evil][EVIL]]
 - [[#flycheck][FLYCHECK]]
@@ -233,6 +234,45 @@ An RSS newsfeed reader for Emacs.  Move through the articles with 'j/k'.  Move t
 
 #+end_src
 
+* ELLAMA
+[[https://github.com/s-kostyaev/ellama][Ellama]] is a tool for interacting with large language models from Emacs.  You need to have 'ollama' installed on your computer to use 'ellama' in Emacs.  You need to pull in any LLMs that you want to have available for use.  For example, if you want to be able to use Llama 3.1, then you need to run 'ollama pull llama3.1'.
+
+#+begin_src emacs-lisp
+(use-package ellama
+  :init
+  (setopt ellama-keymap-prefix "C-c e")  ;; keymap for all ellama functions
+  (setopt ellama-language "English")     ;; language ellama should translate to
+  (require 'llm-ollama)
+  (setopt ellama-provider
+	  (make-llm-ollama
+	   ;; this model should be pulled to use it
+	   ;; value should be the same as you print in terminal during pull
+	   :chat-model "llama3.1"
+	   :embedding-model "nomic-embed-text"
+	   :default-chat-non-standard-params '(("num_ctx" . 8192))))
+  ;; Predefined llm providers for interactive switching.
+  (setopt ellama-providers
+		    '(("zephyr" . (make-llm-ollama
+				   :chat-model "zephyr"
+				   :embedding-model "zephyr"))
+
+		      ("llama3.1" . (make-llm-ollama
+				   :chat-model "llama3.1"
+				   :embedding-model "llama3.1"))
+		      ("mixtral" . (make-llm-ollama
+				    :chat-model "mixtral"
+				    :embedding-model "mixtral"))))
+  (setopt ellama-naming-scheme 'ellama-generate-name-by-llm)
+  ;; Translation llm provider
+  (setopt ellama-translation-provider (make-llm-ollama
+				       :chat-model "mixtral"
+				       :embedding-model "nomic-embed-text"))
+  :config
+  (setq ellama-sessions-directory "~/.config/emacs/ellama-sessions/"
+        ellama-sessions-auto-save t))
+
+#+end_src
+
 * ERADIO
 [[https://github.com/olavfosse/eradio][eradio]] is a simple Internet radio player for Emacs.  It uses 'vlc as its backend by default, but you can change the =eradio-player= variable to use another multimedia player.  I have set eradio to use 'mpv' instead of 'vlc' because it supports more types of Internet radio streams.
 
@@ -376,6 +416,17 @@ You can use the bindings CTRL plus =/- for zooming in/out.  You can also use CTR
     "TAB TAB" '(comment-line :wk "Comment lines")
     "u" '(universal-argument :wk "Universal argument"))
 
+   (dt/leader-keys
+    "a" '(:ignore t :wk "A.I.")
+    "a a" '(ellama-ask-about :wk "Ask ellama about region")
+    "a e" '(:ignore t :wk "Ellama enhance")
+    "a e g" '(ellama-improve-wording :wk "Ellama enhance grammar")
+    "a e w" '(ellama-improve-grammar :wk "Ellama enhance wording")
+    "a i" '(ellama-chat :wk "Ask ellama")
+    "a p" '(ellama-provider-select :wk "Ellama provider select")
+    "a s" '(ellama-summarize :wk "Ellama summarize region")
+    "a t" '(ellama-translate :wk "Ellama translate region"))
+   
   (dt/leader-keys
     "b" '(:ignore t :wk "Bookmarks/Buffers")
     "b b" '(switch-to-buffer :wk "Switch to buffer")
