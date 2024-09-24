@@ -1,4 +1,4 @@
-#+TITLE: DT's GNU Emacs Config
++TITLE: DT's GNU Emacs Config
 #+AUTHOR: Derek Taylor (DT)
 #+DESCRIPTION: DT's personal Emacs config.
 #+STARTUP: showeverything
@@ -419,8 +419,8 @@ You can use the bindings CTRL plus =/- for zooming in/out.  You can also use CTR
     "a" '(:ignore t :wk "A.I.")
     "a a" '(ellama-ask-about :wk "Ask ellama about region")
     "a e" '(:ignore t :wk "Ellama enhance")
-    "a e g" '(ellama-improve-wording :wk "Ellama enhance grammar")
-    "a e w" '(ellama-improve-grammar :wk "Ellama enhance wording")
+    "a e g" '(ellama-improve-grammar :wk "Ellama enhance wording")
+    "a e w" '(ellama-improve-wording :wk "Ellama enhance grammar")
     "a i" '(ellama-chat :wk "Ask ellama")
     "a p" '(ellama-provider-select :wk "Ellama provider select")
     "a s" '(ellama-summarize :wk "Ellama summarize region")
