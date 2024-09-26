@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 
 #+TITLE: DT's GNU Emacs Config
+=======
++TITLE: DT's GNU Emacs Config
+>>>>>>> 5ea1b34d7a73b295c19ecae4d963083c5ffac771
 #+AUTHOR: Derek Taylor (DT)
 #+DESCRIPTION: DT's personal Emacs config.
 #+STARTUP: showeverything
