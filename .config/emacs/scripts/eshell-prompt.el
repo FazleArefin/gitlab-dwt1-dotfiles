@@ -19,7 +19,7 @@
                       (propertize (if stat "]" ")") 'font-lock-face (list :foreground (if stat "#e81050" "#9bee8b"))))
             "")))
     (propertize
-     (format "%s %s %s$ "
+     (format "\n%s %s %s$ "
              (if (< 0 x-stat) (format (propertize "!%s" 'font-lock-face '(:foreground "#e81050")) x-stat)
                (propertize "➤" 'font-lock-face (list :foreground (if (< 0 x-stat) "#e81050" "#9bee8b"))))
              (propertize cwd 'font-lock-face '(:foreground "#45babf"))
