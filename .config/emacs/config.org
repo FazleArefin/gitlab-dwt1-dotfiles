@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-
 #+TITLE: DT's GNU Emacs Config
-=======
-+TITLE: DT's GNU Emacs Config
->>>>>>> 5ea1b34d7a73b295c19ecae4d963083c5ffac771
 #+AUTHOR: Derek Taylor (DT)
 #+DESCRIPTION: DT's personal Emacs config.
 #+STARTUP: showeverything
@@ -75,8 +70,9 @@ To keep this =config.org= a reasonable length, I have moved a lot of code to ind
 ** Sourcing the scripts
 #+begin_src emacs-lisp
 (require 'elpaca-setup)  ;; The Elpaca Package Manager
-(require 'buffer-move)   ;; Buffer-move for better window management
 (require 'app-launchers) ;; Use emacs as a run launcher like dmenu (experimental)
+(require 'buffer-move)   ;; Buffer-move for better window management
+(require 'eshell-prompt) ;; A fancy prompt for eshell
 #+end_src
 
 * ALL THE ICONS
@@ -956,6 +952,10 @@ In my configs, all of my shells (bash, fish, zsh and the ESHELL) require my shel
 Eshell is an Emacs 'shell' that is written in Elisp.
 
 #+begin_src emacs-lisp
+(setopt eshell-prompt-function 'fancy-shell)
+(setopt eshell-prompt-regexp "^[^#$\n]* [$#] ")
+(setopt eshell-highlight-prompt nil)
+
 (use-package eshell-toggle
   :custom
   (eshell-toggle-size-fraction 3)
