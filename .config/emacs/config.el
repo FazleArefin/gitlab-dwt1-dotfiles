@@ -308,6 +308,7 @@
     "e F" '(ediff-files3 :wk "Run ediff on three files")
     "e h" '(counsel-esh-history :which-key "Eshell history")
     "e l" '(eval-last-sexp :wk "Evaluate elisp expression before point")
+    "e n" '(eshell-new :wk "Create new eshell buffer")
     "e r" '(eval-region :wk "Evaluate elisp in region")
     "e R" '(eww-reload :which-key "Reload current page in EWW")
     "e s" '(eshell :which-key "Eshell")
@@ -664,9 +665,19 @@
 ;; Disabling company mode in eshell, because it's annoying.
 (setq company-global-modes '(not eshell-mode))
 
+;; Adding a keybinding for 'pcomplete-list' on F9 key.
 (add-hook 'eshell-mode-hook
           (lambda ()
             (define-key eshell-mode-map (kbd "<f9>") #'pcomplete-list)))
+
+;; A function for easily creating multiple buffers of 'eshell'.
+;; NOTE: `C-u M-x eshell` would also create new 'eshell' buffers.
+(defun eshell-new (name)
+  "Create new eshell buffer named NAME."
+  (interactive "sName: ")
+  (setq name (concat "$" name))
+  (eshell)
+  (rename-buffer name))
 
 (use-package eshell-toggle
   :custom
