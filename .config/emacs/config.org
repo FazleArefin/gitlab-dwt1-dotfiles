@@ -952,9 +952,13 @@ In my configs, all of my shells (bash, fish, zsh and the ESHELL) require my shel
 Eshell is an Emacs 'shell' that is written in Elisp.
 
 #+begin_src emacs-lisp
+;; The eshell prompt
 (setopt eshell-prompt-function 'fancy-shell)
 (setopt eshell-prompt-regexp "^[^#$\n]* [$#] ")
 (setopt eshell-highlight-prompt nil)
+
+;; Disabling company mode in eshell, because it's annoying.
+(setq company-global-modes '(not eshell-mode))
 
 (use-package eshell-toggle
   :custom
