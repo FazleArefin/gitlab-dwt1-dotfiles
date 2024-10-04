@@ -664,6 +664,10 @@
 ;; Disabling company mode in eshell, because it's annoying.
 (setq company-global-modes '(not eshell-mode))
 
+(add-hook 'eshell-mode-hook
+          (lambda ()
+            (define-key eshell-mode-map (kbd "<f9>") #'pcomplete-list)))
+
 (use-package eshell-toggle
   :custom
   (eshell-toggle-size-fraction 3)
