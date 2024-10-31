@@ -23,8 +23,26 @@ packer.startup(function(use)
 	use("wbthomason/packer.nvim")
 
 	-- Dashboard is a nice start screen for nvim
-	use("glepnir/dashboard-nvim")
-
+    use {
+      'nvimdev/dashboard-nvim',
+      event = 'VimEnter',
+      config = function()
+        require('dashboard').setup {
+          -- config
+          theme = "hyper",
+          config = {
+            week_header = {
+              enable = true,
+            },
+            shortcut = {},
+            footer = {'',
+                      'I Miss Emacs Already!'
+            },
+          },
+        }
+      end,
+      requires = {'nvim-tree/nvim-web-devicons'}
+    }
 	-- Telescope
 	use({
 		"nvim-telescope/telescope.nvim",
