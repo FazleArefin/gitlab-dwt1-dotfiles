@@ -2,12 +2,13 @@
   border: none;
   border-radius: 0;
   min-height: 0;
-  font-family: JetBrainsMono Nerd Font;
+  font-family: Ubuntu;
   font-size: 13px;
+  font-weight: bold;
 }
 
 window#waybar {
-  background-color: #181825;
+  background-color: #282c34;
   transition-property: background-color;
   transition-duration: 0.5s;
 }
@@ -50,8 +51,11 @@ window#waybar.hidden {
   background-color: #f38ba8;
 }
 
+#cpu,
 #memory,
+#custom-kernel,
 #custom-power,
+#custom-diskfree,
 #battery,
 #backlight,
 #wireplumber,
@@ -61,12 +65,20 @@ window#waybar.hidden {
   border-radius: 4px;
   margin: 6px 3px;
   padding: 6px 12px;
-  background-color: #1e1e2e;
-  color: #181825;
+  background-color: #282c34;
+  color: #282c34;
+}
+#custom-kernel {
+  background-color: #ff6c6b;
 }
 
 #custom-power {
   margin-right: 6px;
+  background-color: #f2cdcd;
+}
+
+#custom-diskfree {
+  background-color: #fc9867;
 }
 
 #custom-logo {
@@ -78,8 +90,13 @@ window#waybar.hidden {
   color: #1793d1;
 }
 
+#cpu {
+  background-color: #98be65;
+}
+
+
 #memory {
-  background-color: #fab387;
+  background-color: #46d9ff;
 }
 
 #battery {
@@ -89,37 +106,31 @@ window#waybar.hidden {
 #battery.warning,
 #battery.critical,
 #battery.urgent {
-  background-color: #ff0000;
-  color: #FFFF00;
+  background-color: #ff6c6b;
+  color: #f1fa8c;
 }
 
 #battery.charging {
-  background-color: #a6e3a1;
+  background-color: #98be65;
   color: #181825;
 }
 
 #backlight {
-  background-color: #fab387;
+    background-color: #ff6c6b;
 }
 
 #wireplumber {
-  background-color: #f9e2af;
+  background-color: #46d9ff;
 }
 
 #network {
-  background-color: #94e2d5;
+  background-color: #98be65;
   padding-right: 17px;
 }
 
 #clock {
-  font-family: JetBrainsMono Nerd Font;
   background-color: #cba6f7;
 }
-
-#custom-power {
-  background-color: #f2cdcd;
-}
-
 
 tooltip {
   border-radius: 8px;

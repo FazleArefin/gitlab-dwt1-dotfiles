@@ -8,14 +8,15 @@
         "hyprland/workspaces"
     ],
     "modules-center": [
-        "clock"
     ],
     "modules-right": [
         "tray",
+	"custom/kernel",
+	"cpu",
         "memory",
-        "network",
+	"custom/diskfree",
+        "clock",
         "wireplumber",
-        "battery",
         "custom/power"
     ],
     "wlr/taskbar": {
@@ -54,10 +55,14 @@
             "9": []
         }
     },
+    "cpu": {
+        "format": "⧯ Cpu: {usage}%" ,
+        "tooltip": false
+    },
     "memory": {
         "interval": 5,
-        "format": "󰍛 {}%",
-        "max-length": 10
+        "format": "󰍛  Mem: {}%",
+        "max-length": 15
     },
     "tray": {
         "spacing": 10
@@ -65,7 +70,7 @@
     "clock": {
         "tooltip-format": "{calendar}",
         "format-alt": "  {:%a, %d %b %Y}",
-        "format": "  {:%I:%M %p}"
+        "format": "⏱  {:%a, %b %d - %H:%M}"
     },
     "network": {
         "format-wifi" : "{icon}",
@@ -134,6 +139,25 @@
             "critical": 10
         },
         "tooltip": false
+    },
+    "custom/pacman": {
+	"format": "{}  ",
+	"interval": "once",
+	"exec": "pacman_packages",
+	"on-click": "update-system",
+	"signal": 8
+    },
+    "custom/kernel": {
+        "format": "❤ {}",
+	"interval": 3600,
+        "max-length": 20,
+         "exec": "uname -r"
+    },
+    "custom/diskfree": {
+        "format": "🖴 Disk: {} used",
+	"interval": 300,
+        "max-length": 20,
+         "exec": "df --total -hl | grep 'sda1' | awk '{print $5}'"
     },
     "custom/power": {
         "format": "󰤆",
