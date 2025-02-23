@@ -270,4 +270,5 @@ eval "$(starship init bash)"
 # CTRL-t = fzf select
 # CTRL-r = fzf history
 # ALT-c  = fzf cd
-source <(fzf --bash)
+eval "$(fzf --bash)"
+
