@@ -238,5 +238,9 @@ colorscript random
 ### SETTING THE STARSHIP PROMPT ###
 starship init fish | source
 
-### SETUP ZOXIDE ###
-zoxide init fish | source
+### FZF ###
+# Enables the following keybindings:
+# CTRL-t = fzf select
+# CTRL-r = fzf history
+# ALT-c  = fzf cd
+fzf --fish | source

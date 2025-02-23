@@ -264,3 +264,10 @@ colorscript random
 
 ### SETTING THE STARSHIP PROMPT ###
 eval "$(starship init bash)"
+
+### FZF ###
+# Enables the following keybindings:
+# CTRL-t = fzf select
+# CTRL-r = fzf history
+# ALT-c  = fzf cd
+source <(fzf --bash)
