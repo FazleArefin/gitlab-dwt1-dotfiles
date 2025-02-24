@@ -239,7 +239,7 @@ alias mocp="bash -c mocp"
 # The 'if' statement prevents colorscript from showing in 'fzf' previews.
 if status is-interactive
     colorscript random
-fi
+end
 
 ### SETTING THE STARSHIP PROMPT ###
 starship init fish | source
