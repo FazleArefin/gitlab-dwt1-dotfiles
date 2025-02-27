@@ -179,9 +179,10 @@ keys = [
 groups = []
 group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 
-#group_labels = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
-#group_labels = ["DEV", "WWW", "SYS", "DOC", "VBOX", "CHAT", "MUS", "VID", "GFX", "MISC"]
-group_labels = ["", "", "", "", "", "", "⛨", "", ""]
+#group_labels = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+#group_labels = ["DEV", "WWW", "SYS", "DOC", "VBOX", "CHAT", "MUS", "VID", "GFX"]
+#group_labels = ["", "", "", "", "", "", "⛨", "", ""]
+group_labels = [" ", " ", " ", " ", " ", " ", "⛨ ", " ", " "]
 
 group_layouts = ["monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall"]
 
@@ -217,7 +218,7 @@ for i in groups:
 colors = colors.DoomOne
 
 layout_theme = {"border_width": 2,
-                "margin": 8,
+                "margin": 12,
                 "border_focus": colors[8],
                 "border_normal": colors[0]
                 }
@@ -281,9 +282,9 @@ def init_widgets_list():
                  foreground = colors[1]
         ),
         widget.GroupBox(
-                 fontsize = 15,
+                 fontsize = 11,
                  margin_y = 5,
-                 margin_x = 10,
+                 margin_x = 8,
                  padding_y = 0,
                  padding_x = 1,
                  borderwidth = 3,
@@ -385,9 +386,9 @@ def init_widgets_screen2():
 # For ex: Screen(top=bar.Bar(widgets=init_widgets_screen2(), background="#00000000", size=24)),
 
 def init_screens():
-    return [Screen(top=bar.Bar(widgets=init_widgets_screen1(), margin=[8, 12, 8, 12], size=28)),
-            Screen(top=bar.Bar(widgets=init_widgets_screen2(), margin=[8, 12, 8, 12], size=28)),
-            Screen(top=bar.Bar(widgets=init_widgets_screen2(), margin=[8, 12, 8, 12], size=28))]
+    return [Screen(top=bar.Bar(widgets=init_widgets_screen1(), margin=[8, 12, 0, 12], size=28)),
+            Screen(top=bar.Bar(widgets=init_widgets_screen2(), margin=[8, 12, 0, 12], size=28)),
+            Screen(top=bar.Bar(widgets=init_widgets_screen2(), margin=[8, 12, 0, 12], size=28))]
 
 if __name__ in ["config", "__main__"]:
     screens = init_screens()
