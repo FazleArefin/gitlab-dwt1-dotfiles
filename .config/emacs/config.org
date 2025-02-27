@@ -27,7 +27,6 @@
 - [[#general-keybindings][GENERAL KEYBINDINGS]]
 - [[#git-programs][GIT PROGRAMS]]
   - [[#git-time-machine][Git Time Machine]]
-  - [[#magit][Magit]]
 - [[#highlight-todo][HIGHLIGHT TODO]]
 - [[#ivy-counsel][IVY (COUNSEL)]]
 - [[#language-support][LANGUAGE SUPPORT]]
@@ -643,14 +642,6 @@ You can use the bindings CTRL plus =/- for zooming in/out.  You can also use CTR
 )
 #+end_src
 
-** Magit
-[[https://magit.vc/manual/][Magit]] is a full-featured git client for Emacs.
-
-#+begin_src emacs-lisp
-(use-package magit)
-
-#+end_src
-
 * HIGHLIGHT TODO
 Adding highlights to TODO and related words.
 
@@ -953,10 +944,6 @@ In my configs, all of my shells (bash, fish, zsh and the ESHELL) require my shel
 Eshell is an Emacs 'shell' that is written in Elisp.
 
 #+begin_src emacs-lisp
-;; The eshell prompt
-(setopt eshell-prompt-function 'fancy-shell)
-(setopt eshell-prompt-regexp "^[^#$\n]* [$#] ")
-(setopt eshell-highlight-prompt nil)
 
 ;; Disabling company mode in eshell, because it's annoying.
 (setq company-global-modes '(not eshell-mode))

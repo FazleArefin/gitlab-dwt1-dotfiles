@@ -1,7 +1,7 @@
 
 ;;; Code:
 
-(defvar elpaca-installer-version 0.8)
+(defvar elpaca-installer-version 0.10)
 (defvar elpaca-directory (expand-file-name "elpaca/" user-emacs-directory))
 (defvar elpaca-builds-directory (expand-file-name "builds/" elpaca-directory))
 (defvar elpaca-repos-directory (expand-file-name "repos/" elpaca-directory))
@@ -62,6 +62,11 @@
 
 ;; Don't install anything. Defer execution of BODY
 ;;(elpaca nil (message "deferred"))
+(elpaca (magit :branch "main" :pre-build ("make" "info")))
+(elpaca (forge :branch "main"))
+(elpaca (ghub :branch "main"))
+(elpaca (transient :branch "main"))
+(elpaca (with-editor :branch "main"))
 
 (provide 'elpaca-setup)
 
