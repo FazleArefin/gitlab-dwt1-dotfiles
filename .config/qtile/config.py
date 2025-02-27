@@ -222,23 +222,15 @@ layout_theme = {"border_width": 2,
                 }
 
 layouts = [
+    layout.MonadTall(**layout_theme),
+    layout.MonadWide(**layout_theme),
+    layout.Tile(**layout_theme),
+    layout.Max(**layout_theme),
     #layout.Bsp(**layout_theme),
     #layout.Floating(**layout_theme)
     #layout.RatioTile(**layout_theme),
     #layout.VerticalTile(**layout_theme),
     #layout.Matrix(**layout_theme),
-    layout.MonadTall(**layout_theme),
-    #layout.MonadWide(**layout_theme),
-    layout.Tile(
-         shift_windows=True,
-         border_width = 0,
-         margin = 0,
-         ratio = 0.335,
-         ),
-    layout.Max(
-         border_width = 0,
-         margin = 0,
-         ),
     #layout.Stack(**layout_theme, num_stacks=2),
     #layout.Columns(**layout_theme),
     #layout.TreeTab(
