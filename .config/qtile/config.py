@@ -146,7 +146,7 @@ keys = [
     Key([mod], "period", lazy.next_screen(), desc='Move focus to next monitor'),
     Key([mod], "comma", lazy.prev_screen(), desc='Move focus to prev monitor'),
     
-    # Emacs programs launched using the key chord CTRL+e followed by 'key'
+    # Emacs programs launched using the key chord SUPER+e followed by 'key'
     KeyChord([mod],"e", [
         Key([], "e", lazy.spawn(myEmacs), desc='Emacs Dashboard'),
         Key([], "a", lazy.spawn(myEmacs + "--eval '(emms-play-directory-tree \"~/Music/\")'"), desc='Emacs EMMS'),
@@ -183,11 +183,11 @@ keys = [
 groups = []
 group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9",]
 
-group_labels = ["1", "2", "3", "4", "5", "6", "7", "8", "9",]
+#group_labels = ["1", "2", "3", "4", "5", "6", "7", "8", "9",]
 #group_labels = ["DEV", "WWW", "SYS", "DOC", "VBOX", "CHAT", "MUS", "VID", "GFX",]
-#group_labels = ["", "", "", "", "", "", "", "", "",]
+group_labels = [" ", " ", " ", " ", " ", "🎙 ", " ", " ", " "]
 
-group_layouts = ["monadtall", "monadtall", "tile", "tile", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall"]
+group_layouts = ["monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall"]
 
 for i in range(len(group_names)):
     groups.append(
@@ -220,7 +220,7 @@ for i in groups:
 colors = colors.DoomOne
 
 layout_theme = {"border_width": 2,
-                "margin": 8,
+                "margin": 12,
                 "border_focus": colors[8],
                 "border_normal": colors[0]
                 }
@@ -280,9 +280,11 @@ extension_defaults = widget_defaults.copy()
 
 def init_widgets_list():
     widgets_list = [
+        widget.Spacer(length = 8),
         widget.Image(
-                 filename = "~/.config/qtile/icons/logo.png",
+                 filename = "~/.config/qtile/icons/infinity-icon.png",
                  scale = "False",
+                 margin_x = 5,
                  mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(myTerm)},
                  ),
         widget.Prompt(
@@ -295,10 +297,10 @@ def init_widgets_list():
                  margin_y = 5,
                  margin_x = 5,
                  padding_y = 0,
-                 padding_x = 1,
+                 padding_x = 2,
                  borderwidth = 3,
                  active = colors[8],
-                 inactive = colors[1],
+                 inactive = colors[9],
                  rounded = False,
                  highlight_color = colors[2],
                  highlight_method = "line",
@@ -310,15 +312,9 @@ def init_widgets_list():
         widget.TextBox(
                  text = '|',
                  font = "Ubuntu Mono",
-                 foreground = colors[1],
+                 foreground = colors[9],
                  padding = 2,
                  fontsize = 14
-                 ),
-        widget.CurrentLayoutIcon(
-                 # custom_icon_paths = [os.path.expanduser("~/.config/qtile/icons")],
-                 foreground = colors[1],
-                 padding = 4,
-                 scale = 0.6
                  ),
         widget.CurrentLayout(
                  foreground = colors[1],
@@ -327,7 +323,7 @@ def init_widgets_list():
         widget.TextBox(
                  text = '|',
                  font = "Ubuntu Mono",
-                 foreground = colors[1],
+                 foreground = colors[9],
                  padding = 2,
                  fontsize = 14
                  ),
@@ -340,38 +336,20 @@ def init_widgets_list():
                  func = lambda: subprocess.check_output("printf $(uname -r)", shell=True, text=True),
                  foreground = colors[3],
                  fmt = '❤  {}',
-                 decorations=[
-                     BorderDecoration(
-                         colour = colors[3],
-                         border_width = [0, 0, 2, 0],
-                     )
-                 ],
                  ),
-        widget.Spacer(length = 8),
+        widget.Spacer(length = 12),
         widget.CPU(
-                 format = '▓  Cpu: {load_percent}%',
+                 format = '  Cpu: {load_percent}%',
                  foreground = colors[4],
-                 decorations=[
-                     BorderDecoration(
-                         colour = colors[4],
-                         border_width = [0, 0, 2, 0],
-                     )
-                 ],
-                 ),
-        widget.Spacer(length = 8),
+                   ),
+        widget.Spacer(length = 12),
         widget.Memory(
                  foreground = colors[8],
                  mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(myTerm + ' -e htop')},
                  format = '{MemUsed: .0f}{mm}',
                  fmt = '🖥  Mem: {} used',
-                 decorations=[
-                     BorderDecoration(
-                         colour = colors[8],
-                         border_width = [0, 0, 2, 0],
-                     )
-                 ],
                  ),
-        widget.Spacer(length = 8),
+        widget.Spacer(length = 12),
         widget.DF(
                  update_interval = 60,
                  foreground = colors[5],
@@ -381,49 +359,25 @@ def init_widgets_list():
                  format = '{uf}{m} free',
                  fmt = '🖴  Disk: {}',
                  visible_on_warn = False,
-                 decorations=[
-                     BorderDecoration(
-                         colour = colors[5],
-                         border_width = [0, 0, 2, 0],
-                     )
-                 ],
                  ),
-        widget.Spacer(length = 8),
+        widget.Spacer(length = 12),
         widget.Volume(
                  foreground = colors[7],
                  fmt = '🕫  Vol: {}',
-                 decorations=[
-                     BorderDecoration(
-                         colour = colors[7],
-                         border_width = [0, 0, 2, 0],
-                     )
-                 ],
                  ),
-        widget.Spacer(length = 8),
+        widget.Spacer(length = 12),
         widget.KeyboardLayout(
                  foreground = colors[4],
                  fmt = '⌨  Kbd: {}',
-                 decorations=[
-                     BorderDecoration(
-                         colour = colors[4],
-                         border_width = [0, 0, 2, 0],
-                     )
-                 ],
                  ),
-        widget.Spacer(length = 8),
+        widget.Spacer(length = 12),
         widget.Clock(
                  foreground = colors[8],
                  format = "⏱  %a, %b %d - %H:%M",
-                 decorations=[
-                     BorderDecoration(
-                         colour = colors[8],
-                         border_width = [0, 0, 2, 0],
-                     )
-                 ],
                  ),
-        widget.Spacer(length = 8),
+        widget.Spacer(length = 12),
         widget.Systray(padding = 3),
-        widget.Spacer(length = 8),
+        widget.Spacer(length = 18),
 
         ]
     return widgets_list
@@ -442,9 +396,9 @@ def init_widgets_screen2():
 # For ex: Screen(top=bar.Bar(widgets=init_widgets_screen2(), background="#00000000", size=24)),
 
 def init_screens():
-    return [Screen(top=bar.Bar(widgets=init_widgets_screen1(), size=26)),
-            Screen(top=bar.Bar(widgets=init_widgets_screen2(), size=26)),
-            Screen(top=bar.Bar(widgets=init_widgets_screen2(), size=26))]
+    return [Screen(top=bar.Bar(widgets=init_widgets_screen1(), margin=[8, 12, 0, 12], size=28)),
+            Screen(top=bar.Bar(widgets=init_widgets_screen2(), margin=[8, 12, 0, 12], size=28)),
+            Screen(top=bar.Bar(widgets=init_widgets_screen2(), margin=[8, 12, 0, 12], size=28))]
 
 if __name__ in ["config", "__main__"]:
     screens = init_screens()
