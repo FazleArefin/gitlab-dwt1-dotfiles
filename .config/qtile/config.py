@@ -177,13 +177,14 @@ keys = [
 ]
 
 groups = []
-group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9",]
+group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 
-#group_labels = ["1", "2", "3", "4", "5", "6", "7", "8", "9",]
-#group_labels = ["DEV", "WWW", "SYS", "DOC", "VBOX", "CHAT", "MUS", "VID", "GFX",]
-group_labels = [" ", " ", " ", " ", " ", " ", "🎙 ", " ", " "]
+#group_labels = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
+#group_labels = ["DEV", "WWW", "SYS", "DOC", "VBOX", "CHAT", "MUS", "VID", "GFX", "MISC"]
+group_labels = ["", "", "", "", "", "", "⛨", "", ""]
 
 group_layouts = ["monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall"]
+
 
 for i in range(len(group_names)):
     groups.append(
@@ -216,7 +217,7 @@ for i in groups:
 colors = colors.DoomOne
 
 layout_theme = {"border_width": 2,
-                "margin": 12,
+                "margin": 8,
                 "border_focus": colors[8],
                 "border_normal": colors[0]
                 }
@@ -268,11 +269,10 @@ extension_defaults = widget_defaults.copy()
 
 def init_widgets_list():
     widgets_list = [
-        widget.Spacer(length = 8),
+        widget.Spacer(length = 12),
         widget.Image(
                  filename = "~/.config/qtile/icons/infinity-icon.png",
                  scale = "False",
-                 margin_x = 5,
                  mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(myTerm)},
                  ),
         widget.Prompt(
@@ -281,11 +281,11 @@ def init_widgets_list():
                  foreground = colors[1]
         ),
         widget.GroupBox(
-                 fontsize = 11,
+                 fontsize = 15,
                  margin_y = 5,
-                 margin_x = 5,
+                 margin_x = 10,
                  padding_y = 0,
-                 padding_x = 2,
+                 padding_x = 1,
                  borderwidth = 3,
                  active = colors[8],
                  inactive = colors[9],
@@ -317,30 +317,32 @@ def init_widgets_list():
                  ),
         widget.WindowName(
                  foreground = colors[6],
+                 padding = 4,
                  max_chars = 40
                  ),
         widget.GenPollText(
                  update_interval = 300,
                  func = lambda: subprocess.check_output("printf $(uname -r)", shell=True, text=True),
                  foreground = colors[3],
+                 padding = 6, 
                  fmt = '❤  {}',
                  ),
-        widget.Spacer(length = 12),
         widget.CPU(
-                 format = '  Cpu: {load_percent}%',
+                 format = ' Cpu: {load_percent}%',
                  foreground = colors[4],
-                   ),
-        widget.Spacer(length = 12),
+                 padding = 6, 
+                 ),
         widget.Memory(
                  foreground = colors[8],
+                 padding = 6, 
                  mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(myTerm + ' -e htop')},
                  format = '{MemUsed: .0f}{mm}',
                  fmt = '🖥  Mem: {} used',
                  ),
-        widget.Spacer(length = 12),
         widget.DF(
                  update_interval = 60,
                  foreground = colors[5],
+                 padding = 6, 
                  mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(myTerm + ' -e df')},
                  partition = '/',
                  #format = '[{p}] {uf}{m} ({r:.0f}%)',
@@ -348,24 +350,23 @@ def init_widgets_list():
                  fmt = '🖴  Disk: {}',
                  visible_on_warn = False,
                  ),
-        widget.Spacer(length = 12),
         widget.Volume(
                  foreground = colors[7],
+                 padding = 6, 
                  fmt = '🕫  Vol: {}',
                  ),
-        widget.Spacer(length = 12),
         widget.KeyboardLayout(
                  foreground = colors[4],
+                 padding = 6, 
                  fmt = '⌨  Kbd: {}',
                  ),
-        widget.Spacer(length = 12),
         widget.Clock(
                  foreground = colors[8],
+                 padding = 6, 
                  format = "⏱  %a, %b %d - %H:%M",
                  ),
-        widget.Spacer(length = 12),
         widget.Systray(padding = 3),
-        widget.Spacer(length = 18),
+        widget.Spacer(length = 8),
 
         ]
     return widgets_list
@@ -377,16 +378,16 @@ def init_widgets_screen1():
 # All other monitors' bars will display everything but widgets 22 (systray) and 23 (spacer).
 def init_widgets_screen2():
     widgets_screen2 = init_widgets_list()
-    del widgets_screen2[22:24]
+    del widgets_screen2[15:16]
     return widgets_screen2
 
 # For adding transparency to your bar, add (background="#00000000") to the "Screen" line(s)
 # For ex: Screen(top=bar.Bar(widgets=init_widgets_screen2(), background="#00000000", size=24)),
 
 def init_screens():
-    return [Screen(top=bar.Bar(widgets=init_widgets_screen1(), margin=[8, 12, 0, 12], size=28)),
-            Screen(top=bar.Bar(widgets=init_widgets_screen2(), margin=[8, 12, 0, 12], size=28)),
-            Screen(top=bar.Bar(widgets=init_widgets_screen2(), margin=[8, 12, 0, 12], size=28))]
+    return [Screen(top=bar.Bar(widgets=init_widgets_screen1(), margin=[8, 12, 8, 12], size=28)),
+            Screen(top=bar.Bar(widgets=init_widgets_screen2(), margin=[8, 12, 8, 12], size=28)),
+            Screen(top=bar.Bar(widgets=init_widgets_screen2(), margin=[8, 12, 8, 12], size=28))]
 
 if __name__ in ["config", "__main__"]:
     screens = init_screens()
