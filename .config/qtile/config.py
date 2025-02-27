@@ -29,10 +29,6 @@ import subprocess
 from libqtile import bar, extension, hook, layout, qtile, widget
 from libqtile.config import Click, Drag, Group, Key, KeyChord, Match, Screen
 from libqtile.lazy import lazy
-# Make sure 'qtile-extras' is installed or this config will not work.
-from qtile_extras import widget
-from qtile_extras.widget.decorations import BorderDecoration
-#from qtile_extras.widget import StatusNotifier
 import colors
 
 mod = "mod4"              # Sets mod key to SUPER/WINDOWS
