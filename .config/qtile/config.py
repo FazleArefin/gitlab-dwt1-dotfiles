@@ -185,7 +185,7 @@ group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9",]
 
 #group_labels = ["1", "2", "3", "4", "5", "6", "7", "8", "9",]
 #group_labels = ["DEV", "WWW", "SYS", "DOC", "VBOX", "CHAT", "MUS", "VID", "GFX",]
-group_labels = [" ", " ", " ", " ", " ", "🎙 ", " ", " ", " "]
+group_labels = [" ", " ", " ", " ", " ", " ", "🎙 ", " ", " "]
 
 group_layouts = ["monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall"]
 
