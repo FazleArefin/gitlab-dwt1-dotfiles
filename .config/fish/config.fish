@@ -19,7 +19,7 @@ set EDITOR "emacsclient -t -a ''"                 # $EDITOR use Emacs in termina
 set VISUAL "emacsclient -c -a emacs"              # $VISUAL use Emacs in GUI mode
 
 ### SET FZF DEFAULTS
-set FZF_DEFAULT_OPTS "--layout=reverse --border=bold --border=rounded --margin=3% --color=dark"
+set FZF_DEFAULT_OPTS "--layout=reverse --exact --border=bold --border=rounded --margin=3% --color=dark"
 
 ### SET MANPAGER
 ### Uncomment only one of these!
