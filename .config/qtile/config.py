@@ -177,14 +177,14 @@ keys = [
 ]
 
 groups = []
-group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
 
-#group_labels = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
-#group_labels = ["DEV", "WWW", "SYS", "DOC", "VBOX", "CHAT", "MUS", "VID", "GFX"]
-#group_labels = ["", "", "", "", "", "", "⛨", "", ""]
-group_labels = [" ", " ", " ", " ", " ", " ", "⛨ ", " ", " "]
+#group_labels = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
+#group_labels = ["DEV", "WWW", "SYS", "DOC", "VBOX", "CHAT", "MUS", "VID", "GFX", "MISC"]
+group_labels = ["", "", "", "", "", "", "𝦝", "", "", "⛨"]
+#group_labels = [" ", " ", " ", " ", " ", " ", "⛨ ", " ", " "]
 
-group_layouts = ["monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall"]
+group_layouts = ["monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall"]
 
 
 for i in range(len(group_names)):
@@ -282,7 +282,7 @@ def init_widgets_list():
                  foreground = colors[1]
         ),
         widget.GroupBox(
-                 fontsize = 11,
+                 fontsize = 12,
                  margin_y = 5,
                  margin_x = 8,
                  padding_y = 0,
