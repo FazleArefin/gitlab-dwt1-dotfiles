@@ -41,6 +41,7 @@
   - [[#org-tempo][Org-Tempo]]
   - [[#preserve-indentation-on-org-babel-tangle][Preserve Indentation On Org-Babel-Tangle]]
   - [[#toc-org][Toc-Org]]
+  - [[#ox-hugo][Ox-Hugo]]
 - [[#pdfs][PDFs]]
 - [[#perspective][PERSPECTIVE]]
 - [[#projectile][PROJECTILE]]
@@ -833,6 +834,17 @@ Allows us to create a Table of Contents in our Org docs.
 (use-package toc-org
     :commands toc-org-enable
     :init (add-hook 'org-mode-hook 'toc-org-enable))
+
+#+end_src
+
+** Ox-Hugo
+Export org docs to Hugo-style markdown.  Hugo is a static website generator.
+
+#+begin_src emacs-lisp
+(use-package ox-hugo
+  :ensure t   ;Auto-install the package from Melpa
+  :after ox)
+
 #+end_src
 
 * PDFs
