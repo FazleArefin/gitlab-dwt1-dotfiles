@@ -18,7 +18,7 @@ nm-applet &
 sleep 1
 conky -c "$HOME"/.config/conky/qtile/01/"$COLORSCHEME".conf || echo "Couldn't start conky."
 sleep 1
-/usr/bin/emacs --daemon &
+yes | /usr/bin/emacs --daemon &
 
 ### UNCOMMENT ONLY ONE OF THE FOLLOWING THREE OPTIONS! ###
 # 1. Uncomment to restore last saved wallpaper
