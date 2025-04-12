@@ -770,7 +770,7 @@ Neotree is a file tree viewer.  When you open neotree, it jumps to the current f
 * ORG MODE
 ** Agenda
 #+begin_src emacs-lisp
-(setq org-agenda-files '("~/nc/Org/agenda.org"))
+(setq org-agenda-files '("~/.config/emacs/agenda.org"))
 #+end_src
 
 ** Bullets
