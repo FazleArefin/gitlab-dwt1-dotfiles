@@ -395,7 +395,7 @@ def init_widgets_list():
     widgets_list = [
         widget.Spacer(length = 12),
         widget.Image(
-                 filename = "~/.config/qtile/icons/infinity-icon.png",
+                 filename = "~/.config/qtile/icons/dt-icon.png",
                  scale = "False",
                  mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(myTerm)},
                  ),
