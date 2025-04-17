@@ -274,7 +274,7 @@ def init_widgets_list():
         widget.Image(
                  filename = "~/.config/qtile/icons/dt-icon.png",
                  scale = "False",
-                 mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(myTerm)},
+                 mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn("qtilekeys-yad")},
                  ),
         widget.Prompt(
                  font = "Ubuntu Mono",
