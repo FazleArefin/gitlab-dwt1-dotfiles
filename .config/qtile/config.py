@@ -181,7 +181,7 @@ group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
 
 #group_labels = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
 #group_labels = ["DEV", "WWW", "SYS", "DOC", "VBOX", "CHAT", "MUS", "VID", "GFX", "MISC"]
-group_labels = ["", "", "", "", "", "", "𝦝", "", "", "⛨"]
+group_labels = ["", "", "", "", "", "", "⧳", "", "", "⛨"]
 #group_labels = [" ", " ", " ", " ", " ", " ", "⛨ ", " ", " "]
 
 group_layouts = ["monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall"]
@@ -270,7 +270,7 @@ extension_defaults = widget_defaults.copy()
 
 def init_widgets_list():
     widgets_list = [
-        widget.Spacer(length = 12),
+        widget.Spacer(length = 8),
         widget.Image(
                  filename = "~/.config/qtile/icons/dt-icon.png",
                  scale = "False",
@@ -282,11 +282,11 @@ def init_widgets_list():
                  foreground = colors[1]
         ),
         widget.GroupBox(
-                 fontsize = 12,
+                 fontsize = 10,
                  margin_y = 5,
-                 margin_x = 8,
+                 margin_x = 12,
                  padding_y = 0,
-                 padding_x = 1,
+                 padding_x = 0,
                  borderwidth = 3,
                  active = colors[8],
                  inactive = colors[9],
@@ -298,6 +298,23 @@ def init_widgets_list():
                  other_current_screen_border = colors[7],
                  other_screen_border = colors[4],
                  ),
+        widget.TextBox(
+                 text = '|',
+                 font = "Ubuntu Mono",
+                 foreground = colors[9],
+                 padding = 2,
+                 fontsize = 14
+                 ),
+        widget.LaunchBar(
+                 progs = [("🦁", "brave", "Brave web browser"),
+                          ("🚀", "alacritty", "Alacritty terminal"),
+                          ("📁", "pcmanfm", "PCManFM file manager"),
+                          ("🎸", "vlc", "VLC media player")
+                         ], 
+                 fontsize = 10,
+                 padding = 10,
+                 foreground = colors[3],
+        ),
         widget.TextBox(
                  text = '|',
                  font = "Ubuntu Mono",
@@ -329,7 +346,7 @@ def init_widgets_list():
                  fmt = '❤  {}',
                  ),
         widget.CPU(
-                 format = ' Cpu: {load_percent}%',
+                 format = '  Cpu: {load_percent}%',
                  foreground = colors[4],
                  padding = 6, 
                  ),
@@ -338,7 +355,7 @@ def init_widgets_list():
                  padding = 6, 
                  mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(myTerm + ' -e htop')},
                  format = '{MemUsed: .0f}{mm}',
-                 fmt = '🖥  Mem: {} used',
+                 fmt = '🖥  Mem: {}',
                  ),
         widget.DF(
                  update_interval = 60,
@@ -356,15 +373,10 @@ def init_widgets_list():
                  padding = 6, 
                  fmt = '🕫  Vol: {}',
                  ),
-        widget.KeyboardLayout(
-                 foreground = colors[4],
-                 padding = 6, 
-                 fmt = '⌨  Kbd: {}',
-                 ),
         widget.Clock(
                  foreground = colors[8],
                  padding = 6, 
-                 format = "⏱  %a, %b %d - %H:%M",
+                 format = "⧗  %a, %b %d - %H:%M",
                  ),
         widget.Systray(padding = 3),
         widget.Spacer(length = 8),
@@ -379,7 +391,7 @@ def init_widgets_screen1():
 # All other monitors' bars will display everything but widgets 22 (systray) and 23 (spacer).
 def init_widgets_screen2():
     widgets_screen2 = init_widgets_list()
-    del widgets_screen2[15:16]
+    del widgets_screen2[16:17]
     return widgets_screen2
 
 # For adding transparency to your bar, add (background="#00000000") to the "Screen" line(s)
