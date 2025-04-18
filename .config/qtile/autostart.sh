@@ -14,6 +14,7 @@ else
 fi
 
 nm-applet &
+systemctl --user start mpd &
 "$HOME"/.screenlayout/layout.sh &
 sleep 1
 conky -c "$HOME"/.config/conky/qtile/01/"$COLORSCHEME".conf || echo "Couldn't start conky."
