@@ -384,6 +384,7 @@ Defining the various fonts that Emacs will use.
 
 ;; Uncomment the following line if line spacing needs adjusting.
 (setq-default line-spacing 0.12)
+(set-face-background 'mouse "#ffffff")
 
 #+end_src
 
