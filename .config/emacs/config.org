@@ -388,7 +388,8 @@ Defining the various fonts that Emacs will use.
 #+end_src
 
 ** Zooming In/Out
-You can use the bindings CTRL plus =/- for zooming in/out.  You can also use CTRL plus the mouse wheel for zooming in/out.
+You can use the bindings CTRL plus =/- for zooming in/out.  You can also use CTRL plus the 
+mouse wheel for zooming in/out.
 
 #+begin_src emacs-lisp
 (global-set-key (kbd "C-=") 'text-scale-increase)
