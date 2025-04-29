@@ -33,18 +33,24 @@ main() {
 
     case "$choice" in
     'doom-one')
+
         ## ALACRITTY ##
         sed -i "s#^import = .*#import = [\"~/.config/alacritty/themes/themes/doom_one.toml\"]#" "$HOME"/.config/alacritty/alacritty.toml || echo "Error setting Alacritty colors"
+
         ## QTILE ##
         sed -i "s/^colors = colors.*/colors = colors.DoomOne/g" "$HOME"/.config/qtile/config.py || echo "Cannot find colors = colors."
         sed -i "s/^colors=colors.*/colors = colors.DoomOne/g" "$HOME"/.config/qtile/config.py  || echo "Cannot find colors=colors."
+        sed -i "s/^COLORSCHEME=.*/COLORSCHEME=$choice/g" "$HOME"/.config/qtile/autostart.sh  || echo "Cannot find COLORSCHEME."
         qtile cmd-obj -o cmd -f restart && $HOME/.config/qtile/autostart.sh || echo "Qtile not running"
+
         ## CONKY ##
         sed -i "s#^myConky=.*#myConky=\"$HOME/.config/conky/qtile/01/$choice.conf\"#" "$HOME"/.local/bin/conky-toggle  || echo "Cannot change conky-toggle script."
         conky-toggle && conky-toggle
+
         ## EMACS ##
         sed -i "s/load-theme '.*/load-theme 'doom-one t)/g" "$HOME"/.config/emacs/config.org || echo "Cannot find config.org."
         emacsclient -e "(load-theme 'doom-one t)" || echo "Emacsclient not running."
+
         ;;
     'dracula')
         ## ALACRITTY ##

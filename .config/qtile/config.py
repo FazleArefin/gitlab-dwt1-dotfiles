@@ -181,13 +181,13 @@ keys = [
 groups = []
 group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
 
+# Uncomment only one of the following lines
+group_labels = ["", "", "", "", "", "", "⧳", "", "", "⛨"]
 #group_labels = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
 #group_labels = ["DEV", "WWW", "SYS", "DOC", "VBOX", "CHAT", "MUS", "VID", "GFX", "MISC"]
-group_labels = ["", "", "", "", "", "", "⧳", "", "", "⛨"]
-#group_labels = [" ", " ", " ", " ", " ", " ", "⛨ ", " ", " "]
 
+# The default layout for each of the 10 workspaces
 group_layouts = ["monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall"]
-
 
 for i in range(len(group_names)):
     groups.append(
@@ -284,9 +284,9 @@ def init_widgets_list():
                  foreground = colors[1]
         ),
         widget.GroupBox(
-                 fontsize = 10,
+                 fontsize = 12,
                  margin_y = 5,
-                 margin_x = 12,
+                 margin_x = 16,
                  padding_y = 0,
                  padding_x = 0,
                  borderwidth = 3,
@@ -313,8 +313,8 @@ def init_widgets_list():
                           ("📁", "pcmanfm", "PCManFM file manager"),
                           ("🎸", "vlc", "VLC media player")
                          ], 
-                 fontsize = 10,
-                 padding = 10,
+                 fontsize = 12,
+                 padding = 12,
                  foreground = colors[3],
         ),
         widget.TextBox(
@@ -337,24 +337,25 @@ def init_widgets_list():
                  ),
         widget.WindowName(
                  foreground = colors[6],
-                 padding = 4,
+                 padding = 8,
                  max_chars = 40
                  ),
         widget.GenPollText(
                  update_interval = 300,
                  func = lambda: subprocess.check_output("printf $(uname -r)", shell=True, text=True),
                  foreground = colors[3],
-                 padding = 6, 
+                 padding = 8, 
                  fmt = '❤  {}',
                  ),
         widget.CPU(
-                 format = '  Cpu: {load_percent}%',
                  foreground = colors[4],
-                 padding = 6, 
+                 padding = 8, 
+                 mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(myTerm + ' -e htop')},
+                 format = '  Cpu: {load_percent}%',
                  ),
         widget.Memory(
                  foreground = colors[8],
-                 padding = 6, 
+                 padding = 8, 
                  mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(myTerm + ' -e htop')},
                  format = '{MemUsed: .0f}{mm}',
                  fmt = '🖥  Mem: {}',
@@ -362,8 +363,8 @@ def init_widgets_list():
         widget.DF(
                  update_interval = 60,
                  foreground = colors[5],
-                 padding = 6, 
-                 mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(myTerm + ' -e df')},
+                 padding = 8, 
+                 mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn('notify-disk')},
                  partition = '/',
                  #format = '[{p}] {uf}{m} ({r:.0f}%)',
                  format = '{uf}{m} free',
@@ -372,15 +373,19 @@ def init_widgets_list():
                  ),
         widget.Volume(
                  foreground = colors[7],
-                 padding = 6, 
+                 padding = 8, 
                  fmt = '🕫  Vol: {}',
                  ),
         widget.Clock(
                  foreground = colors[8],
-                 padding = 6, 
-                 format = "⧗  %a, %b %d - %H:%M",
+                 padding = 8, 
+                 mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn('notify-date')},
+                 ## Uncomment for date and time 
+                 # format = "⧗  %a, %b %d - %H:%M",
+                 ## Uncomment for time only
+                 format = "⧗  %I:%M %p",
                  ),
-        widget.Systray(padding = 3),
+        widget.Systray(padding = 6),
         widget.Spacer(length = 8),
 
         ]
@@ -400,9 +405,9 @@ def init_widgets_screen2():
 # For ex: Screen(top=bar.Bar(widgets=init_widgets_screen2(), background="#00000000", size=24)),
 
 def init_screens():
-    return [Screen(top=bar.Bar(widgets=init_widgets_screen1(), margin=[8, 12, 0, 12], size=28)),
-            Screen(top=bar.Bar(widgets=init_widgets_screen2(), margin=[8, 12, 0, 12], size=28)),
-            Screen(top=bar.Bar(widgets=init_widgets_screen2(), margin=[8, 12, 0, 12], size=28))]
+    return [Screen(top=bar.Bar(widgets=init_widgets_screen1(), margin=[8, 12, 0, 12], size=30)),
+            Screen(top=bar.Bar(widgets=init_widgets_screen2(), margin=[8, 12, 0, 12], size=30)),
+            Screen(top=bar.Bar(widgets=init_widgets_screen2(), margin=[8, 12, 0, 12], size=30))]
 
 if __name__ in ["config", "__main__"]:
     screens = init_screens()
