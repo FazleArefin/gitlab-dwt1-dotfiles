@@ -173,7 +173,8 @@ keys = [
         Key([], "q", lazy.spawn("dm-logout -r"), desc='Logout menu'),
         Key([], "r", lazy.spawn("dm-radio -r"), desc='Listen to online radio'),
         Key([], "s", lazy.spawn("dm-websearch -r"), desc='Search various engines'),
-        Key([], "t", lazy.spawn("dm-translate -r"), desc='Translate text')
+        Key([], "t", lazy.spawn("dm-translate -r"), desc='Translate text'),
+        Key([], "u", lazy.spawn("dm-music -r"), desc='Toggle music mpc/mpd')
     ])
 ]
 
