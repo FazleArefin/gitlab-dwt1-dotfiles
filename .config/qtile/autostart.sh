@@ -1,6 +1,6 @@
 #!/usr/bin/env bash 
 
-COLORSCHEME=tomorrow-night
+COLORSCHEME=doom-one
 
 ### AUTOSTART PROGRAMS ###
 
