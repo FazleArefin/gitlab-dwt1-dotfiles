@@ -13,6 +13,7 @@ else
     lxsession &
 fi
 
+dunst -conf "$HOME"/.config/dunst/"$COLORSCHEME" &
 nm-applet &
 systemctl --user start mpd &
 "$HOME"/.screenlayout/layout.sh &
