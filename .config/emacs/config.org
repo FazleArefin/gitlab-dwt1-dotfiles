@@ -1019,9 +1019,10 @@ Vterm is a terminal emulator within Emacs.  The 'shell-file-name' setting sets t
 
 #+begin_src emacs-lisp
 (use-package vterm
-:config
-(setq shell-file-name "/bin/sh"
-      vterm-max-scrollback 5000))
+  :ensure t
+  :config
+  (setq shell-file-name "/bin/sh"
+        vterm-max-scrollback 5000))
 #+end_src
 
 ** Vterm-Toggle 
@@ -1029,6 +1030,7 @@ Vterm is a terminal emulator within Emacs.  The 'shell-file-name' setting sets t
 
 #+begin_src emacs-lisp
 (use-package vterm-toggle
+  :ensure t
   :after vterm
   :config
   ;; When running programs in Vterm and in 'normal' mode, make sure that ESC
