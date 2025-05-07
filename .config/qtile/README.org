@@ -577,13 +577,18 @@ def switch_screens(qtile):
 #+end_src
 
 * Drag Floating Layouts
-Sets MOD + left mouse to drag floating windows.  Sets MOD + right mouse to resize floating windows.
+Sets SUPER + left mouse to drag floating windows.  Sets SUPER + right mouse to resize floating windows.
+NOTE When inside a virtual machine, you may not be able to use the SUPER key for floating windows if you use SUPER as the mod key for your window manager in the host machine.  Thus, I've duplicated all of the mouse bindings to also function with ALT.
 
 #+begin_src python
 mouse = [
     Drag([mod], "Button1", lazy.window.set_position_floating(), start=lazy.window.get_position()),
     Drag([mod], "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size()),
     Click([mod], "Button2", lazy.window.bring_to_front()),
+    Drag(["mod1"], "Button1", lazy.window.set_position_floating(), start=lazy.window.get_position()),
+    Drag(["mod1"], "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size()),
+    Click(["mod1"], "Button2", lazy.window.bring_to_front()),
+
 ]
 
 #+end_src
