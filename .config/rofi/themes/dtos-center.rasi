@@ -9,7 +9,7 @@
     background-color:            #282c34;
     border-color:                #51afef;
     text-color:                  #bbc2cf;
-    font:                        "Ubuntu Mono 11";
+    font:                        "Ubuntu 10";
     prompt-font:                 "Ubuntu Bold 10";
     prompt-background:           #51afef;
     prompt-foreground:           #282c34;
@@ -19,6 +19,9 @@
     selected-normal-background:  #ae3f3e;
     selected-normal-foreground:  #ffffff;
     spacing:                     3;
+}
+configuration {
+    drun-icon-theme: "Tela circle blue dark";
 }
 #window {
     border:  2;
@@ -42,7 +45,7 @@
 }
 #element {
     border:  0;
-    padding: 1px ;
+    padding: 3px ;
 }
 #element.selected.normal {
     background-color: @selected-normal-background;
