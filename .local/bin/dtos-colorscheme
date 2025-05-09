@@ -51,6 +51,10 @@ main() {
         sed -i "s/load-theme '.*/load-theme 'doom-one t)/g" "$HOME"/.config/emacs/config.org || echo "Cannot find config.org."
         emacsclient -e "(load-theme 'doom-one t)" || echo "Emacsclient not running."
 
+        ## DUNST ##
+        killall dunst
+        dunst -conf "$HOME"/.config/dunst/"$choice"
+
         ;;
     'dracula')
 
@@ -70,6 +74,10 @@ main() {
         ## EMACS ##
         sed -i "s/load-theme '.*/load-theme 'doom-dracula t)/g" "$HOME"/.config/emacs/config.org || echo "Cannot find config.org."
         emacsclient -e "(load-theme 'doom-dracula t)" || echo "Emacsclient not running."
+
+        ## DUNST ##
+        killall dunst
+        dunst -conf "$HOME"/.config/dunst/"$choice"
 
         ;;
      'gruvbox-dark')
@@ -91,6 +99,10 @@ main() {
         sed -i "s/load-theme '.*/load-theme 'doom-gruvbox t)/g" "$HOME"/.config/emacs/config.org || echo "Cannot find config.org."
         emacsclient -e "(load-theme 'doom-gruvbox t)" || echo "Emacsclient not running."
 
+        ## DUNST ##
+        killall dunst
+        dunst -conf "$HOME"/.config/dunst/"$choice"
+
         ;;
     'monokai-pro')
 
@@ -110,6 +122,10 @@ main() {
         ## EMACS ##
         sed -i "s/load-theme '.*/load-theme 'doom-monokai-pro t)/g" "$HOME"/.config/emacs/config.org || echo "Cannot find config.org."
         emacsclient -e "(load-theme 'doom-monokai-pro t)" || echo "Emacsclient not running."
+
+        ## DUNST ##
+        killall dunst
+        dunst -conf "$HOME"/.config/dunst/"$choice"
 
         ;;
     'nord')
@@ -131,6 +147,10 @@ main() {
         sed -i "s/load-theme '.*/load-theme 'doom-nord t)/g" "$HOME"/.config/emacs/config.org || echo "Cannot find config.org."
         emacsclient -e "(load-theme 'doom-nord t)" || echo "Emacsclient not running."
 
+        ## DUNST ##
+        killall dunst
+        dunst -conf "$HOME"/.config/dunst/"$choice"
+
         ;;
     'oceanic-next')
 
@@ -150,6 +170,10 @@ main() {
         ## EMACS ##
         sed -i "s/load-theme '.*/load-theme 'doom-oceanic-next t)/g" "$HOME"/.config/emacs/config.org || echo "Cannot find config.org."
         emacsclient -e "(load-theme 'doom-oceanic-next t)" || echo "Emacsclient not running."
+
+        ## DUNST ##
+        killall dunst
+        dunst -conf "$HOME"/.config/dunst/"$choice"
 
         ;;
     'palenight')
@@ -171,6 +195,10 @@ main() {
         sed -i "s/load-theme '.*/load-theme 'doom-palenight t)/g" "$HOME"/.config/emacs/config.org || echo "Cannot find config.org."
         emacsclient -e "(load-theme 'doom-palenight t)" || echo "Emacsclient not running."
 
+        ## DUNST ##
+        killall dunst
+        dunst -conf "$HOME"/.config/dunst/"$choice"
+
         ;;
     'solarized-dark')
 
@@ -190,6 +218,10 @@ main() {
         ## EMACS ##
         sed -i "s/load-theme '.*/load-theme 'doom-solarized-dark t)/g" "$HOME"/.config/emacs/config.org || echo "Cannot find config.org."
         emacsclient -e "(load-theme 'doom-solarized-dark t)" || echo "Emacsclient not running."
+
+        ## DUNST ##
+        killall dunst
+        dunst -conf "$HOME"/.config/dunst/"$choice"
 
         ;;
     'solarized-light')
@@ -211,6 +243,10 @@ main() {
         sed -i "s/load-theme '.*/load-theme 'doom-solarized-light t)/g" "$HOME"/.config/emacs/config.org || echo "Cannot find config.org."
         emacsclient -e "(load-theme 'doom-solarized-light t)" || echo "Emacsclient not running."
 
+        ## DUNST ##
+        killall dunst
+        dunst -conf "$HOME"/.config/dunst/"$choice"
+
         ;;
     'tomorrow-night')
 
@@ -231,6 +267,10 @@ main() {
         sed -i "s/load-theme '.*/load-theme 'doom-tomorrow-night t)/g" "$HOME"/.config/emacs/config.org || echo "Cannot find config.org."
         emacsclient -e "(load-theme 'doom-tomorrow-night t)" || echo "Emacsclient not running."
  
+        ## DUNST ##
+        killall dunst
+        dunst -conf "$HOME"/.config/dunst/"$choice"
+
         ;;
     'Quit this program')
         echo "Program terminated." && exit 0
