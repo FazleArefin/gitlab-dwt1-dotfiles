@@ -257,14 +257,14 @@ keys = [
 #+end_src
 
 * Groups
-Groups are really workspaces.  group_names should remain 1-9 so the MOD+1-9 keybindings work as expected.  group_labels are the labels of the groups that are displayed in the bar.  Feel free to change group_labels to anything you wish.  group_layouts sets the default layout for each group.
+Groups are really workspaces.  group_names should remain 0-9 so the MOD+0-9 keybindings work as expected.  group_labels are the labels of the groups that are displayed in the bar.  Feel free to change group_labels to anything you wish.  group_layouts sets the default layout for each group.
 
 #+begin_src python
 groups = []
 group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
 
 # Uncomment only one of the following lines
-group_labels = ["", "", "👁", "", "", "", "✀", "🗯", "", "⎙"]
+group_labels = ["", "", "👁", "", "", "", "✀", "꩜", "", "⎙"]
 #group_labels = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
 #group_labels = ["DEV", "WWW", "SYS", "DOC", "VBOX", "CHAT", "MUS", "VID", "GFX", "MISC"]
 
@@ -406,12 +406,11 @@ def init_widgets_list():
                  foreground = colors[1]
         ),
         widget.GroupBox(
-                 font = "Ubuntu Mono",
                  fontsize = 11,
                  margin_y = 5,
                  margin_x = 14,
                  padding_y = 0,
-                 padding_x = 1,
+                 padding_x = 2,
                  borderwidth = 3,
                  active = colors[8],
                  inactive = colors[9],

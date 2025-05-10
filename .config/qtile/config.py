@@ -182,7 +182,7 @@ groups = []
 group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
 
 # Uncomment only one of the following lines
-group_labels = ["", "", "👁", "", "", "", "✀", "🗯", "", "⎙"]
+group_labels = ["", "", "👁", "", "", "", "✀", "꩜", "", "⎙"]
 #group_labels = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
 #group_labels = ["DEV", "WWW", "SYS", "DOC", "VBOX", "CHAT", "MUS", "VID", "GFX", "MISC"]
 
@@ -284,12 +284,11 @@ def init_widgets_list():
                  foreground = colors[1]
         ),
         widget.GroupBox(
-                 font = "Ubuntu Mono",
                  fontsize = 11,
                  margin_y = 5,
                  margin_x = 14,
                  padding_y = 0,
-                 padding_x = 1,
+                 padding_x = 2,
                  borderwidth = 3,
                  active = colors[8],
                  inactive = colors[9],
