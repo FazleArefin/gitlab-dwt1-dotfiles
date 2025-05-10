@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+#
+# Script name: stay
+# Description: Opens terminal and runs a command and stays open.
+# Dependencies: dtos-settings
+# GitLab: https://www.gitlab.com/dtos/dtos-settings/
+# License: https://www.gitlab.com/dtos/dtos-settings/
+# Contributors: Derek Taylor
+
+source "$HOME"/.config/dtos-settings/dtos.conf
+
+$DTOSTERM -e bash -c "$*; echo -e; tput setaf 5 bold; \
+    read -p 'Press any key to exit ' -s -n 1"
