@@ -221,9 +221,9 @@ alias gpg-check="gpg2 --keyserver-options auto-key-retrieve --verify"
 alias gpg-retrieve="gpg2 --keyserver-options auto-key-retrieve --receive-keys"
 
 # change your default USER shell
-alias tobash="sudo chsh $USER -s /bin/bash && echo 'Log out and log back in for change to take effect.'"
-alias tozsh="sudo chsh $USER -s /bin/zsh && echo 'Log out and log back in for change to take effect.'"
-alias tofish="sudo chsh $USER -s /bin/fish && echo 'Log out and log back in for change to take effect.'"
+alias tobash="chsh $USER -s /bin/bash && echo 'Log out and log back in for change to take effect.'"
+alias tozsh="chsh $USER -s /bin/zsh && echo 'Log out and log back in for change to take effect.'"
+alias tofish="chsh $USER -s /bin/fish && echo 'Log out and log back in for change to take effect.'"
 
 # bigger font in tty and regular font in tty
 alias bigfont="setfont ter-132b"
