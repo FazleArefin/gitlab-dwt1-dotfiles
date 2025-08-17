@@ -314,7 +314,7 @@ def init_widgets_list():
                           ("🎸", "vlc", "VLC media player")
                          ], 
                  fontsize = 12,
-                 padding = 12,
+                 padding = 6,
                  foreground = colors[3],
         ),
         widget.TextBox(
