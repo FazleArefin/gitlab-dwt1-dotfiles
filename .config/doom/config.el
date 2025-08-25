@@ -56,7 +56,8 @@
 ;; change `org-directory'. It must be set before org loads!
 
 (setq org-directory "~/nc/Org/")
-
+(setq org-modern-table-vertical 1)
+(setq org-modern-table t)
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
@@ -89,3 +90,7 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
+(setq confirm-kill-emacs nil)
+
+(setq initial-buffer-choice 'vterm)
