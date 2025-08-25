@@ -93,4 +93,4 @@
 
 (setq confirm-kill-emacs nil)
 
-(setq initial-buffer-choice 'vterm)
+(setq initial-buffer-choice 'eshell)
