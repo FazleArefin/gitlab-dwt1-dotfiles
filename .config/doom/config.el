@@ -58,6 +58,8 @@
 (setq org-directory "~/nc/Org/")
 (setq org-modern-table-vertical 1)
 (setq org-modern-table t)
+(add-hook 'org-mode-hook #'hl-todo-mode)
+
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
