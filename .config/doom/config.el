@@ -17,9 +17,9 @@
 
 (setq display-line-numbers-type t)
 (map! :leader
-      (:prefix ("T" . "toggle here")
-       :desc "Toggle eshell split"            "e" #'+eshell/here
-       :desc "Toggle vterm split"             "v" #'+vterm/here))
+      (:prefix ("o" . "open here")
+       :desc "Open eshell here"    "e" #'+eshell/here
+       :desc "Open vterm here"     "v" #'+vterm/here))
 
 (custom-set-faces
  '(markdown-header-face ((t (:inherit font-lock-function-name-face :weight bold :family "variable-pitch"))))
