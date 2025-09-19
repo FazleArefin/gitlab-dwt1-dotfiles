@@ -2,8 +2,16 @@
 
 * Table of Contents :toc:
 - [[#doom-settings][Doom Settings]]
+- [[#keybindings][Keybindings]]
+  - [[#comment-line][Comment Line]]
+  - [[#toggle-bindings][Toggle bindings]]
+- [[#markdown][Markdown]]
+  - [[#headers][Headers]]
+  - [[#toggle-markdown-view][Toggle Markdown View]]
 - [[#org][Org]]
-- [[#other-stuff][Other Stuff]]
+  - [[#basic-settings][Basic Settings]]
+  - [[#headers-1][Headers]]
+- [[#sensible-defaults][Sensible Defaults]]
 
 * Doom Settings
 #+begin_src emacs-lisp
@@ -12,7 +20,80 @@
 
 #+end_src
 
+* Keybindings
+
+** Comment Line
+#+begin_src emacs-lisp
+(map! :leader
+      :desc "Comment line" "-" #'comment-line)
+
+#+end_src
+
+** Toggle bindings
+#+begin_src emacs-lisp
+(map! :leader
+      (:prefix ("t" . "toggle")
+       :desc "Toggle line numbers"            "l" #'doom/toggle-line-numbers
+       :desc "Toggle eshell split"            "e" #'+eshell/toggle
+       :desc "Toggle line highlight in frame" "h" #'hl-line-mode
+       :desc "Toggle line highlight globally" "H" #'global-hl-line-mode
+       :desc "Toggle markdown-view-mode"      "m" #'dt/toggle-markdown-view-mode
+       :desc "Toggle truncate lines"          "t" #'toggle-truncate-lines
+       :desc "Toggle treemacs"                "T" #'+treemacs/toggle
+       :desc "Toggle vterm split"             "v" #'+vterm/toggle))
+
+(setq display-line-numbers-type t)
+(map! :leader
+      (:prefix ("T" . "toggle here")
+       :desc "Toggle eshell split"            "e" #'+eshell/here
+       :desc "Toggle vterm split"             "v" #'+vterm/here))
+
+
+#+end_src
+
+* Markdown
+This sets the font size for each markdown header level.  Having variable font sizes in a markdown outline makes it visually appealing and more readable.
+
+
+** Headers
+#+begin_src emacs-lisp
+(custom-set-faces
+ '(markdown-header-face ((t (:inherit font-lock-function-name-face :weight bold :family "variable-pitch"))))
+ '(markdown-header-face-1 ((t (:inherit markdown-header-face :height 1.6))))
+ '(markdown-header-face-2 ((t (:inherit markdown-header-face :height 1.5))))
+ '(markdown-header-face-3 ((t (:inherit markdown-header-face :height 1.4))))
+ '(markdown-header-face-4 ((t (:inherit markdown-header-face :height 1.3))))
+ '(markdown-header-face-5 ((t (:inherit markdown-header-face :height 1.2))))
+ '(markdown-header-face-6 ((t (:inherit markdown-header-face :height 1.1)))))
+
+#+end_src
+
+** Toggle Markdown View
+A custom function to toggle between standard 'markdown-mode' and 'markdown-view-mode'.  Custom functions in Emacs should be named as "prefix/name-of-function" to make it clear that the function is custom and not a standard Emacs function.  In my case, I begin all my custom functions with 'dt'.
+
+#+begin_src emacs-lisp
+(defun dt/toggle-markdown-view-mode ()
+  "Toggle between `markdown-mode' and `markdown-view-mode'."
+  (interactive)
+  (if (eq major-mode 'markdown-view-mode)
+      (markdown-mode)
+    (markdown-view-mode)))
+
+#+end_src
+
 * Org
+** Basic Settings
+#+begin_src emacs-lisp
+
+(setq org-directory "~/nc/Org/")
+(setq org-modern-table-vertical 1)
+(setq org-modern-table t)
+(add-hook 'org-mode-hook #'hl-todo-mode)
+
+#+end_src
+
+** Headers
+This sets the font size for each Org header level.  Having variable font sizes in an Org outline makes it visually appealing and more readable.
 #+begin_src emacs-lisp
 (custom-theme-set-faces!
 'doom-one
@@ -26,27 +107,12 @@
 '(org-level-1 :inherit outline-1 :height 1.6)
 '(org-document-title  :height 1.8 :bold t :underline nil))
 
-(setq org-directory "~/nc/Org/")
-(setq org-modern-table-vertical 1)
-(setq org-modern-table t)
-(add-hook 'org-mode-hook #'hl-todo-mode)
-
 #+end_src
 
-* Other Stuff
+* Sensible Defaults
 #+begin_src emacs-lisp
-(setq display-line-numbers-type t)
-
-(map! :leader
-      :desc "Comment line" "-" #'comment-line)
-
-;; If you use `org' and don't want your org files in the default location below,
-;; change `org-directory'. It must be set before org loads!
-
-
-
-(setq confirm-kill-emacs nil)
-
-(setq initial-buffer-choice 'eshell)
+(setq display-line-numbers-type t)   ;; Turn line numbers on
+(setq confirm-kill-emacs nil)        ;; Don't confirm on exit
+(setq initial-buffer-choice 'eshell) ;; Eshell is initial buffer
 
 #+end_src
