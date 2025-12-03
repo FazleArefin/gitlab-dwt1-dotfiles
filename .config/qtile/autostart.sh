@@ -4,17 +4,23 @@ COLORSCHEME=doom-one
 
 ### AUTOSTART PROGRAMS ###
 
-picom --daemon &
+if systemd-detect-virt --quiet; then
+    lxsession &
+    sleep 1
+    killall picom
+    xrandr -s 1920x1080 &
+else
+    lxsession &
+fi
+
 dunst -conf "$HOME"/.config/dunst/"$COLORSCHEME" &
 nm-applet &
-/usr/bin/emacs --daemon &
+systemctl --user start mpd &
 "$HOME"/.screenlayout/layout.sh &
-
-#systemctl --user start mpd &
-
 sleep 1
 conky -c "$HOME"/.config/conky/qtile/01/"$COLORSCHEME".conf || echo "Couldn't start conky."
 sleep 1
+yes | /usr/bin/emacs --daemon &
 
 ### UNCOMMENT ONLY ONE OF THE FOLLOWING THREE OPTIONS! ###
 # 1. Uncomment to set wallpaper with 'waypaper' 
