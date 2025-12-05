@@ -264,7 +264,7 @@ groups = []
 group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
 
 # Uncomment only one of the following lines
-group_labels = ["", "", "👁", "", "", "", "✀", "꩜", "", "⎙"]
+group_labels = ["⬤", "⬤", "⬤", "⬤", "⬤", "⬤", "⬤", "⬤", "⬤", "⬤", ]
 #group_labels = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
 #group_labels = ["DEV", "WWW", "SYS", "DOC", "VBOX", "CHAT", "MUS", "VID", "GFX", "MISC"]
 
@@ -396,7 +396,7 @@ def init_widgets_list():
     widgets_list = [
         widget.Spacer(length = 8),
         widget.Image(
-                 filename = "~/.config/qtile/icons/dt-icon.png",
+                 filename = "~/.config/qtile/icons/cachyos.svg",
                  scale = "False",
                  mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn("qtilekeys-yad")},
                  ),
@@ -406,7 +406,7 @@ def init_widgets_list():
                  foreground = colors[1]
         ),
         widget.GroupBox(
-                 fontsize = 11,
+                 fontsize = 9,
                  margin_y = 5,
                  margin_x = 14,
                  padding_y = 0,
@@ -467,20 +467,20 @@ def init_widgets_list():
                  func = lambda: subprocess.check_output("printf $(uname -r)", shell=True, text=True),
                  foreground = colors[3],
                  padding = 8, 
-                 fmt = '❤  {}',
+                 fmt = '{}',
                  ),
         widget.CPU(
                  foreground = colors[4],
                  padding = 8, 
                  mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(myTerm + ' -e htop')},
-                 format = '  Cpu: {load_percent}%',
+                 format = 'Cpu: {load_percent}%',
                  ),
         widget.Memory(
                  foreground = colors[8],
                  padding = 8, 
                  mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(myTerm + ' -e htop')},
                  format = '{MemUsed: .0f}{mm}',
-                 fmt = '🖥  Mem: {}',
+                 fmt = 'Mem: {}',
                  ),
         widget.DF(
                  update_interval = 60,
@@ -490,13 +490,13 @@ def init_widgets_list():
                  partition = '/',
                  #format = '[{p}] {uf}{m} ({r:.0f}%)',
                  format = '{uf}{m} free',
-                 fmt = '🖴  Disk: {}',
+                 fmt = 'Disk: {}',
                  visible_on_warn = False,
                  ),
         widget.Volume(
                  foreground = colors[7],
                  padding = 8, 
-                 fmt = '🕫  Vol: {}',
+                 fmt = 'Vol: {}',
                  ),
         widget.Clock(
                  foreground = colors[8],
@@ -505,7 +505,7 @@ def init_widgets_list():
                  ## Uncomment for date and time 
                  # format = "⧗  %a, %b %d - %H:%M",
                  ## Uncomment for time only
-                 format = "⧗  %I:%M %p",
+                 format = "%I:%M %p",
                  ),
         widget.Systray(padding = 6),
         widget.Spacer(length = 8),
