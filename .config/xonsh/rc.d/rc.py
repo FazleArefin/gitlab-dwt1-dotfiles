@@ -7,6 +7,18 @@
 # My xonsh config written in python as opposed to using the standard .xonshrc format.
 
 from xonsh.xontribs import xontribs_load
+import os
+
+# EXPAND THE HOME DIR IN THE PATH
+local_bin = os.path.expanduser("~/.local/bin")
+applications_dir = os.path.expanduser("~/Applications")
+
+### ADDING DIRS TO PATH ###
+if local_bin not in __xonsh__.env["PATH"]:
+    __xonsh__.env["PATH"].append(local_bin)
+
+if applications_dir not in __xonsh__.env["PATH"]:
+    __xonsh__.env["PATH"].append(applications_dir)
 
 ### XONSH THEME ###
 __xonsh__.env['XONSH_COLOR_STYLE'] = 'one-dark'
