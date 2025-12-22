@@ -43,8 +43,8 @@ aliases['..'] = 'cd ..'
 aliases['-'] = 'cd -'
 
 for i in range(1, 10):
-    aliases[','*i] = lambda: $[cd @("../" * len($__ALIAS_NAME))]
-
+    aliases[',' * i] = f'cd {"../" * i}'
+    
 # Vim and Emacs
 aliases |= {
     'vim': 'nvim',
