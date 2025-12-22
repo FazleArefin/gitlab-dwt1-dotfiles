@@ -42,6 +42,7 @@ xenv['MANPAGER'] = 'nvim +Man!'
 aliases['..'] = 'cd ..'
 aliases['-'] = 'cd -'
 
+# Quickly go up in directories using ',,' ',,,' ',,,,' etc.
 for i in range(1, 10):
     aliases[',' * i] = f'cd {"../" * i}'
     
